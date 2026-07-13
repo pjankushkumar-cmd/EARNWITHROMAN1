@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+
+  <title>ROMAN SURESHOTS | Strategy Community</title>
+
+  <meta name="description" content="DIVINE SURESHOTS - Community insights, strategy discussions and entertainment updates." />
+  <meta name="theme-color" content="#0a0f1e" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+  <!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1457343136405101');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1457343136405101&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+  
+  <!-- THREE JS -->
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://unpkg.com/three@0.128.0/build/three.module.js"
+    }
+  }
+  </script>
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      font-family:'Inter',sans-serif;
+      overflow:hidden;
+      background:#05070f;
+      color:#fff;
+    }
+
+    #bg{
+      position:fixed;
+      inset:0;
+      z-index:0;
+    }
+
+    .main{
+      position:relative;
+      z-index:5;
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:20px;
+    }
+
+    .card{
+      width:100%;
+      max-width:520px;
+      background:rgba(10,15,30,0.68);
+      border:1px solid rgba(255,255,255,0.12);
+      backdrop-filter:blur(12px);
+      border-radius:38px;
+      padding:28px 22px 30px;
+      text-align:center;
+      box-shadow:0 20px 50px rgba(0,0,0,0.45);
+      animation:fadeUp .7s ease;
+    }
+
+    .logo-wrap{
+      width:100%;
+      display:flex;
+      justify-content:center;
+      margin-bottom:22px;
+    }
+
+    .logo{
+      width:170px;
+      height:170px;
+      object-fit:cover;
+      border-radius:50%;
+      background:rgba(255,255,255,0.04);
+      padding:8px;
+      border:4px solid rgba(255,215,0,0.45);
+      box-shadow:0 0 35px rgba(255,170,0,0.35);
+    }
+
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:7px;
+      background:rgba(255,180,0,0.12);
+      border:1px solid rgba(255,180,0,0.35);
+      color:#FFD966;
+      font-size:13px;
+      font-weight:700;
+      padding:8px 16px;
+      border-radius:999px;
+      margin-bottom:18px;
+    }
+
+    h1{
+      font-size:42px;
+      font-weight:800;
+      background:linear-gradient(135deg,#ffffff,#ffd966,#ff9900);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      margin-bottom:12px;
+      letter-spacing:-1px;
+    }
+
+    .desc{
+      color:#d7dced;
+      font-size:16px;
+      line-height:1.6;
+      margin-bottom:24px;
+      font-weight:500;
+    }
+
+    .join-btn{
+      width:100%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:12px;
+      text-decoration:none;
+      background:linear-gradient(135deg,#ffbf47,#ff8c00);
+      color:#08101d;
+      font-size:22px;
+      font-weight:800;
+      padding:18px;
+      border-radius:70px;
+      transition:.25s;
+      box-shadow:0 10px 35px rgba(255,140,0,.45);
+      animation:pulse 2s infinite;
+    }
+
+    .join-btn:hover{
+      transform:scale(1.02);
+    }
+
+    .disclaimer{
+      margin-top:16px;
+      padding:10px 12px;
+      border-radius:14px;
+      background:rgba(255,255,255,0.04);
+      border:1px solid rgba(255,255,255,0.07);
+      color:#bfc8e3;
+      font-size:11px;
+      line-height:1.5;
+      text-align:center;
+    }
+
+    .stats{
+      margin-top:28px;
+      display:flex;
+      justify-content:space-between;
+      border-top:1px solid rgba(255,255,255,0.08);
+      padding-top:22px;
+      gap:10px;
+    }
+
+    .stat{
+      flex:1;
+    }
+
+    .stat h3{
+      color:#FFD966;
+      font-size:24px;
+      margin-bottom:5px;
+    }
+
+    .stat p{
+      font-size:11px;
+      color:#9ea8c7;
+      letter-spacing:1px;
+    }
+
+    footer{
+      position:fixed;
+      bottom:12px;
+      width:100%;
+      text-align:center;
+      font-size:12px;
+      color:rgba(255,255,255,0.35);
+      z-index:5;
+      padding:0 15px;
+    }
+
+    @keyframes pulse{
+      0%{
+        box-shadow:0 0 0 0 rgba(255,140,0,.55);
+      }
+      70%{
+        box-shadow:0 0 0 18px rgba(255,140,0,0);
+      }
+      100%{
+        box-shadow:0 0 0 0 rgba(255,140,0,0);
+      }
+    }
+
+    @keyframes fadeUp{
+      from{
+        opacity:0;
+        transform:translateY(40px);
+      }
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+
+    @media(max-width:600px){
+
+      .card{
+        padding:24px 18px 28px;
+      }
+
+      .logo{
+        width:140px;
+        height:140px;
+      }
+
+      h1{
+        font-size:34px;
+      }
+
+      .desc{
+        font-size:15px;
+      }
+
+      .join-btn{
+        font-size:19px;
+        padding:16px;
+      }
+
+      .stat h3{
+        font-size:20px;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- 3D BACKGROUND -->
+  <div id="bg"></div>
+
+  <div class="main">
+
+    <div class="card">
+
+      <!-- Put logo.jpg in same folder -->
+      <div class="logo-wrap">
+        <img src="logo.jpg" class="logo" alt="EARN WITH ROMAN">
+      </div>
+
+      <div class="badge">
+        <i class="fa-solid fa-shield-halved"></i>
+        COMMUNITY & STRATEGY 
+      </div>
+
+      <h1>EARN WITH ROMAN</h1>
+
+      <div class="desc">
+        🔥 Premium Community Access 🔥
+        <br><br>
+        Market Trends • Strategy Discussions • Community Insights • Daily Updates
+      </div>
+
+      <a href="https://t.me/+i3g0Rl58PitmZDk9"
+         class="join-btn"
+         target="_blank">
+
+        <i class="fab fa-telegram-plane"></i>
+        JOIN TELEGRAM
+        <i class="fa-solid fa-arrow-right"></i>
+
+      </a>
+
+      <div class="disclaimer">
+        Entertainment & community purposes only. No guaranteed results or profits.
+      </div>
+
+      <div class="stats">
+
+        <div class="stat">
+          <h3>24/7</h3>
+          <p>COMMUNITY ACCESS</p>
+        </div>
+
+        <div class="stat">
+          <h3>15K+</h3>
+          <p>MEMBERS</p>
+        </div>
+
+        <div class="stat">
+          <h3>LIVE</h3>
+          <p>DAILY UPDATES</p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <footer>
+  </footer>
+
+  <!-- THREE JS -->
+  <script type="module">
+
+    import * as THREE from 'three';
+
+    const container = document.getElementById('bg');
+
+    const scene = new THREE.Scene();
+
+    const camera = new THREE.PerspectiveCamera(
+      45,
+      window.innerWidth / window.innerHeight,
+      0.1,
+      1000
+    );
+
+    camera.position.z = 12;
+
+    const renderer = new THREE.WebGLRenderer({
+      antialias:true
+    });
+
+    renderer.setSize(window.innerWidth, window.innerHeight);
+
+    container.appendChild(renderer.domElement);
+
+    const ambient = new THREE.AmbientLight(0xffffff,0.5);
+    scene.add(ambient);
+
+    const light = new THREE.PointLight(0xff8800,1.5);
+    light.position.set(5,5,5);
+    scene.add(light);
+
+    const geometry = new THREE.SphereGeometry(1,64,64);
+
+    const material = new THREE.MeshStandardMaterial({
+      color:0xff9900,
+      emissive:0x442200,
+      metalness:0.8,
+      roughness:0.25
+    });
+
+    const sphere = new THREE.Mesh(geometry,material);
+
+    scene.add(sphere);
+
+    const ringGeo = new THREE.TorusGeometry(1.8,0.06,32,120);
+
+    const ringMat = new THREE.MeshStandardMaterial({
+      color:0xffbb33,
+      emissive:0xaa4400
+    });
+
+    const ring = new THREE.Mesh(ringGeo,ringMat);
+
+    ring.rotation.x = Math.PI / 2;
+
+    scene.add(ring);
+
+    const particlesCount = 1200;
+
+    const positions = new Float32Array(particlesCount * 3);
+
+    for(let i=0;i<particlesCount*3;i++){
+      positions[i] = (Math.random()-0.5)*25;
+    }
+
+    const particleGeo = new THREE.BufferGeometry();
+
+    particleGeo.setAttribute(
+      'position',
+      new THREE.BufferAttribute(positions,3)
+    );
+
+    const particleMat = new THREE.PointsMaterial({
+      color:0xffaa33,
+      size:0.05
+    });
+
+    const particles = new THREE.Points(
+      particleGeo,
+      particleMat
+    );
+
+    scene.add(particles);
+
+    function animate(){
+
+      requestAnimationFrame(animate);
+
+      sphere.rotation.y += 0.008;
+
+      ring.rotation.z += 0.01;
+
+      particles.rotation.y += 0.0008;
+
+      renderer.render(scene,camera);
+
+    }
+
+    animate();
+
+    window.addEventListener('resize',()=>{
+
+      camera.aspect = window.innerWidth / window.innerHeight;
+
+      camera.updateProjectionMatrix();
+
+      renderer.setSize(
+        window.innerWidth,
+        window.innerHeight
+      );
+
+    });
+
+  </script>
+
+</body>
+</html>
+
